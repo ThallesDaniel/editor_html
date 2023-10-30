@@ -17,16 +17,28 @@
         font-family: Arial, sans-serif;
         overflow: scroll;
       }
+      #title-container {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
     </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css"
+    />
   </head>
   <body>
-     <h1>HTML code</h1>
+    <div id="title-container">
+      <h3>Código</h3>
+      <h3>Preview</h3>
+    </div>
     <div id="editor-container">
-     
       <div id="html-editor" contenteditable="true"></div>
       <div id="preview"></div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
     <script>
       const htmlEditor = document.getElementById("html-editor");
       const preview = document.getElementById("preview");
@@ -36,6 +48,7 @@
       function updatePreview() {
         const html = htmlEditor.innerText;
         preview.innerHTML = html;
+        hljs.highlightBlock(preview);
       }
       updatePreview();
     </script>
